@@ -1,0 +1,21 @@
+/* .col {
+    border: 2px; 
+    border-color: #282c34;
+} */
+
+/* .container-box {
+    background-color: blue;
+} */
+
+.btn {
+    border: 0;
+    width: initial;
+   
+
+}
+
+.btn-div {
+    border: 2px solid #282c34 ;
+    margin: 0;
+    overflow: hidden;
+}
