@@ -1,0 +1,15 @@
+.myInbox-p {
+    font-size: medium;
+    margin-left: 0px !important;
+}
+
+.myInbox-btn-div {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.myInbox-btn-div button{
+    height: 30px;
+    border-radius: 25%;
+}
