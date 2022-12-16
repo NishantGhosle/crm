@@ -1,12 +1,13 @@
 import React from "react";
 import "./myInboxHome.css";
+import Calendar from 'react-calendar';
 
 const MyInboxHome = () => {
   return (
-    <div class="container text-center">
-      <div class="row g-2">
-        <div class="col-6">
-          <div class="p-3 border bg-light">
+    <div className="container text-center">
+      <div className="row g-2">
+        <div className="col-6">
+          <div className="p-3 border bg-light">
             <p className="myInbox-p">MyInbox: UNREAD EMAILS</p>
             <div className="myInbox-btn-div">
               <button>Create</button>
@@ -14,8 +15,8 @@ const MyInboxHome = () => {
                 <span>30</span> Results
               </p>
             </div>
-            <table class="table">
-              <thead class="table-dark">
+            <table className="table">
+              <thead className="table-dark">
                 <tr>
                   <th>#</th>
                   <th>Subject</th>
@@ -52,14 +53,14 @@ const MyInboxHome = () => {
             </table>
           </div>
         </div>
-        <div class="col-6">
-          <div class="p-3 border bg-light">Custom column padding</div>
+        <div className="col-6">
+          <div className="p-3 border bg-light">Custom column paddinghiii</div>
         </div>
-        <div class="col-6">
-          <div class="p-3 border bg-light">Custom column padding</div>
+        <div className="col-6">
+          <div className="p-3 border bg-light"><Calendar /></div>
         </div>
-        <div class="col-6">
-          <div class="p-3 border bg-light">Custom column padding</div>
+        <div className="col-6">
+          <div className="p-3 border bg-light">Custom column padding</div>
         </div>
       </div>
     </div>
