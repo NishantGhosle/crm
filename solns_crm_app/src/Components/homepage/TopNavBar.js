@@ -1,9 +1,10 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "./topNavBar.css";
 import { useNavigate } from "react-router-dom";
 
 const TopNavBar = () => {
-  // let [bgcolor,setbgcolor] = useState('white')
+  // let [val, setval] = useState("Home");
+  // let [id, setid] = useState(0);
   const navigate = useNavigate();
   function clickhandle(val, id) {
     console.log(val, id);
@@ -37,12 +38,8 @@ const TopNavBar = () => {
     } else {
       navigate("/");
     }
-    let ele = document.getElementById(id);
-    console.log(ele);
-    ele.style.backgroundColor = "green";
-    
-
   }
+
   let navbar_array = [
     "Home",
     "Leads",
@@ -69,8 +66,8 @@ const TopNavBar = () => {
           return (
             <li className="nav-item" role="presentation" key={index}>
               <button
-                style={{backgroundcolor: bgcolor}}
-                className="btn"
+                className="btn  btn-outline-secondary me-2"
+                type="button"
                 id={index}
                 onClick={() => clickhandle(value, index)}
               >

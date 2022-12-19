@@ -1,0 +1,31 @@
+.features-outer-div {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.p-lead{
+    color: #282c34 ;
+    font-size: 20px;
+    font-weight: 600;
+    margin-left: 50px;
+    margin-bottom: 0px;
+}
+
+.list-box {
+    width: fit-content;
+    color: white;
+    
+}
+
+.list-item {
+    background-color: #50545c;
+    
+   
+}
+
+.btn-lead{
+    color: white;
+}

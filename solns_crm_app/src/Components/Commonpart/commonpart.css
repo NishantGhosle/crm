@@ -23,4 +23,15 @@
     background-color: rgb(231, 230, 235);
     margin-right: 10px;
   }
+
+  .search_form{
+    margin-bottom: 10px;
+  }
+
+  .btn-search{
+    color: white !important;
+    font-size: 20px !important;
+  }
+  
+
   
