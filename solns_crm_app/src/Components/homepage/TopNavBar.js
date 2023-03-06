@@ -2,7 +2,38 @@ import React, { useEffect, useState } from "react";
 import "./topNavBar.css";
 import { useNavigate } from "react-router-dom";
 
-const TopNavBar = () => {
+
+const TopNavBar = ({email_id,type,profile}) => {
+  let navbar_array;
+  let dashboard;
+  console.log(profile);
+  if(type==='admin'){
+ 
+    navbar_array = [
+      "Home",
+      "Users",
+      "Allocation",
+      "Leads",
+      "Accounts",
+      "Opportunities",
+      "Cases",
+      "Reports",
+    ];
+  }else if(type === "user"){
+ 
+    navbar_array = [
+      "Home",
+      "Allocated",
+      "Leads",
+      "Accounts",
+      "Opportunities",
+      "Cases",
+      "Reports",
+    ];
+
+  }
+ 
+ 
   // let [val, setval] = useState("Home");
   // let [id, setid] = useState(0);
   const navigate = useNavigate();
@@ -10,51 +41,131 @@ const TopNavBar = () => {
     console.log(val, id);
 
     if (val == "Home") {
-      navigate("/");
+      navigate(`/dashboard`); 
+      
     } else if (val === "Leads") {
-      navigate("/leads");
+      navigate("/leads", {
+        state: {
+          email: `${email_id}`,
+          type: `${type}`,
+          profile: profile,
+        },
+      });
     } else if (val === "Accounts") {
-      navigate("/account");
+      
+      navigate("/account", {
+        state: {
+          email: `${email_id}`,
+          type: `${type}`,
+          profile: `${profile}`,
+          
+        },
+      });
     } else if (val === "Opportunities") {
-      navigate("/opportunities");
+   
+      navigate("/opportunities", {
+        state: {
+          email: `${email_id}`,
+          type: `${type}`,
+          profile: profile,
+        },
+      });
     } else if (val === "Cases") {
-      navigate("/case");
-    } else if (val === "Contact") {
-      navigate("/contacts");
+      
+      navigate("/case", {
+        state: {
+          email: `${email_id}`,
+          type: `${type}`,
+          profile: profile,
+        },
+      });
     } else if (val === "Calendar") {
-      navigate("/calendars");
+      
+      navigate("/calendars", {
+        state: {
+          email: `${email_id}`,
+          type: `${type}`,
+          profile: profile,
+        },
+      });
     } else if (val === "Reports") {
-      navigate("/reports");
+      
+      navigate("/reports", {
+        state: {
+          email: `${email_id}`,
+          type: `${type}`,
+          profile: profile,
+        },
+      });
     } else if (val === "Emails") {
-      navigate("/emails");
+     
+      navigate("/emails", {
+        state: {
+          email: `${email_id}`,
+          type: `${type}`,
+          profile: profile,
+        },
+      });
     } else if (val === "Meeting") {
-      navigate("/meeting");
+    
+      navigate("/meeting", {
+        state: {
+          email: `${email_id}`,
+          type: `${type}`,
+          profile: profile,
+        },
+      });
     } else if (val === "Calls") {
-      navigate("/calls");
-    } else if (val === "Goals") {
-      navigate("/goals");
+     
+      navigate("/calls", {
+        state: {
+          email: `${email_id}`,
+          type: `${type}`,
+          profile: profile,
+        },
+      });
     } else if (val === "Tasks") {
-      navigate("/task");
-    } else {
+      
+      navigate("/task", {
+        state: {
+          email: `${email_id}`,
+          type: `${type}`,
+          profile: profile,
+        },
+      });
+    } 
+    else if (val === "Allocation") {
+      navigate("/allocation", {
+        state: {
+          email: `${email_id}`,
+          type: `${type}`,
+          profile: profile,
+        },
+      });
+    } 
+    else if (val === "Allocated") {
+      navigate("/allocated", {
+        state: {
+          email: `${email_id}`,
+          type: `${type}`,
+          profile: profile,
+        },
+      });
+    } 
+    else if (val === "Users") {
+      navigate(`/userlist`, {
+        state: {
+          email: `${email_id}`,
+          type: `${type}`,
+          profile: profile,
+        },
+      }); 
+    }else {
       navigate("/");
     }
   }
 
-  let navbar_array = [
-    "Home",
-    "Leads",
-    "Accounts",
-    "Opportunities",
-    "Cases",
-    "Contact",
-    "Calendar",
-    "Reports",
-    "Emails",
-    "Meeting",
-    "Calls",
-    "Goals",
-    "Tasks",
-  ];
+ 
   return (
     <div>
       <ul

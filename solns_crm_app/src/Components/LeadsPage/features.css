@@ -29,3 +29,25 @@
 .btn-lead{
     color: white;
 }
+
+.dropdown{
+    margin-top: 10px !important;
+    margin-bottom: 10px !important;
+}
+
+
+.search_form{
+   margin-right: 150px;
+    width: 500px;
+  }
+
+  .btn-search{
+    color: black !important;
+    font-size: 20px !important;
+    margin-left: -45px !important;
+  }
+
+  .formbox{
+    display: flex;
+    flex-direction: row;
+  }

@@ -1,37 +1,85 @@
 import "./App.css";
+import React, { useState, useContext } from "react";
 import Home from "./Components/homepage/Home";
 import Lead from "./Components/LeadsPage/Lead";
-import { Route,Routes } from "react-router-dom";
+import { Route, Routes } from "react-router-dom";
 import Account from "./Components/Accountspage/Account";
-import Calendars from "./Components/Calendarpage/Calendars";
-import Calls from "./Components/Callspage/Calls";
 import Case from "./Components/Casespage/Case";
-import Contact from "./Components/Contactpage/Contact";
-import Emails from "./Components/EmailsPage/Emails";
-import Goals from "./Components/Goalspage/Goals"
-import Meetings from "./Components/Meetingpage/Meetings";
 import Opportunities from "./Components/Opportunitiespage/Opportunities";
 import Reports from "./Components/Reportspage/Reports";
-import Task from "./Components/taskpage/Task";
+import IndividualLead from "./Components/IndividualLead/IndividualLead";
+import OnBoard from "./Components/OnBoard/OnBoard";
+import EditLeadComp from "./Components/LeadsPage/EditLeadComp";
+import AdminLogin from "./Components/Login/LoginPage";
+import CreateUser from "./Components/DashBoard/CreateUser";
+import UsersList from "./Components/DashBoard/UserList";
+import Allocation from "./Components/DashBoard/Allocation";
+import AllocateLead from "./Components/DashBoard/AllocateLead";
+import Allocated from "./Components/UserDashBoard/Allocated";
+import Dashboard from "./Components/DashBoard/Dashboard";
+
 
 function App() {
+  // const { user } = useContext(AuthContext);
+  // let type = user.type;
   return (
     <div className="App">
       <Routes>
-        <Route path="/" element={<Home />} />
-        <Route index element={<Home />} />
+        <Route path="/" element={<AdminLogin />} />
+        <Route index element={<AdminLogin />} />
+        {/* {type === "user" && (
+          <>
+            <Route path="/home" element={<Home />} />
+            <Route path="/usercreate" element={<CreateUser />} />
+            <Route path="/dashboard" element={<Dashboard />} />
+            <Route path="/allocation" element={<Allocation />} />
+            <Route path="/allocateleads" element={<AllocateLead />} />
+            <Route path="/userlist" element={<UsersList />} />
+            <Route path="/Leads" element={<Lead />} />
+            <Route path="/account" element={<Account />} />
+            <Route path="/case" element={<Case />} />
+            <Route path="/individuallead" element={<IndividualLead />} />
+            <Route path="/opportunities" element={<Opportunities />} />
+            <Route path="/reports" element={<Reports />} />
+            <Route path="/onboard" element={<OnBoard />} />
+            <Route path="/editleadcomp" element={<EditLeadComp />} />
+            <Route path="*" element={<Dashboard />} />
+          </>
+        )}
+
+        {type === "admin" && (
+          <>
+            <Route path="/home" element={<Home />} />
+            <Route path="/dashboard" element={<Dashboard />} />
+            <Route path="/allocated" element={<Allocated />} />
+            <Route path="/Leads" element={<Lead />} />
+            <Route path="/account" element={<Account />} />
+            <Route path="/case" element={<Case />} />
+            <Route path="/individuallead" element={<IndividualLead />} />
+            <Route path="/opportunities" element={<Opportunities />} />
+            <Route path="/reports" element={<Reports />} />
+            <Route path="/onboard" element={<OnBoard />} />
+            <Route path="/editleadcomp" element={<EditLeadComp />} />
+            <Route path="*" element={<Dashboard />} />
+          </>
+        )} */}
+
+        <Route path="/home" element={<Home />} />
+        <Route path="/usercreate" element={<CreateUser />} />
+        <Route path="/dashboard" element={<Dashboard />} />
+        <Route path="/allocation" element={<Allocation />} />
+        <Route path="/allocated" element={<Allocated />} />
+        <Route path="/allocateleads" element={<AllocateLead />} />
+        <Route path="/userlist" element={<UsersList />} />
         <Route path="/Leads" element={<Lead />} />
         <Route path="/account" element={<Account />} />
-        <Route path="/calendars" element={<Calendars />} />
-        <Route path="/calls" element={<Calls />} />
         <Route path="/case" element={<Case />} />
-        <Route path="/contacts" element={<Contact />} />
-        <Route path="/emails" element={<Emails />} />
-        <Route path="/goals" element={<Goals />} />
-        <Route path="/meeting" element={<Meetings />} />
+        <Route path="/individuallead" element={<IndividualLead />} />
         <Route path="/opportunities" element={<Opportunities />} />
         <Route path="/reports" element={<Reports />} />
-        <Route path="/task" element={<Task />} />
+        <Route path="/onboard" element={<OnBoard />} />
+        <Route path="/editleadcomp" element={<EditLeadComp />} />
+        <Route path="*" element={<Dashboard />} />
       </Routes>
     </div>
   );
