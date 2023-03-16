@@ -1,4 +1,4 @@
-import React from 'react'
+import React from "react";
 
 const ReportComplete = (props) => {
   return (
@@ -20,7 +20,7 @@ const ReportComplete = (props) => {
             const statuscolor = value.status;
             return (
               <>
-                {statuscolor === "completed" && 
+                {statuscolor === "completed" && (
                   <tr key={value._id} className="table-success">
                     <td>{value._id}</td>
                     <td>{value.firstname}</td>
@@ -30,15 +30,14 @@ const ReportComplete = (props) => {
                     <td>{value.status}</td>
                     <td>{value.date}</td>
                   </tr>
-
-                }
+                )}
               </>
             );
           })}
         </tbody>
       </table>
     </div>
-  )
-}
+  );
+};
 
 export default ReportComplete;

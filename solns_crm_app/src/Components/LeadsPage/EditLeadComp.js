@@ -1,5 +1,5 @@
 import CommonPart from "../Commonpart/CommonPart";
-import TopNavBar from '../homepage/TopNavBar';
+import TopNavBar from "../homepage/TopNavBar";
 import { useLocation } from "react-router-dom";
 import React, { useEffect, useState, useContext } from "react";
 import EditLeadForm from "../Forms/EditLeadForm";
@@ -7,10 +7,13 @@ import AuthContext from "../Context/AuthProvider";
 import AdminLogin from "../Login/LoginPage";
 
 const EditLeadComp = () => {
-
-  const {user} = useContext(AuthContext);
-
+  const { user } = useContext(AuthContext);
   const [leadId, setLeadId] = useState("");
+  const location = useLocation();
+  const id = location.state.id;
+  const type = location.state.type;
+  const email = location.state.email;
+  const userid = location.state.profile;
   const [formvalue, setFormvalue] = useState({
     firstname: "",
     lastname: "",
@@ -18,18 +21,10 @@ const EditLeadComp = () => {
     description: "",
     status: "",
   });
-
-  const location = useLocation();
-  const id = location.state.id;
-  const type = location.state.type;
-  const email = location.state.email;
-  const userid = location.state.profile;
-  console.log(userid);
-  
+  // console.log(userid);
 
   function updateLead(id) {
     setLeadId(id);
-
     fetch(`http://localhost:3030/getbyid/${id}`)
       .then((response) => response.json())
       .then((json) => {
@@ -71,7 +66,6 @@ const EditLeadComp = () => {
         alert("successfully updated");
         console.log(" successfully updated");
         console.log(response);
-       
       })
       .catch((err) => {
         console.log(err);
@@ -80,18 +74,19 @@ const EditLeadComp = () => {
 
   return (
     <>
-    {user && ( <div>
-      <CommonPart />
-      <TopNavBar  email_id={email} type={type} profile={userid}/>
-      <EditLeadForm
-        handleUpdateLeadSubmit={handleUpdateLeadSubmit}
-        handleInput={handleInput}
-        formvalue={formvalue}
-      />
-    </div>)}
-    {!user && (<AdminLogin />)}
+      {user && (
+        <div>
+          <CommonPart />
+          <TopNavBar email_id={email} type={type} profile={userid} />
+          <EditLeadForm
+            handleUpdateLeadSubmit={handleUpdateLeadSubmit}
+            handleInput={handleInput}
+            formvalue={formvalue}
+          />
+        </div>
+      )}
+      {!user && <AdminLogin />}
     </>
-   
   );
 };
 

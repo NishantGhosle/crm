@@ -1,4 +1,4 @@
-import React from 'react'
+import React from "react";
 
 const ReportNew = (props) => {
   return (
@@ -20,7 +20,7 @@ const ReportNew = (props) => {
             const statuscolor = value.status;
             return (
               <>
-                {statuscolor === "new" && 
+                {statuscolor === "new" && (
                   <tr key={index} className="table-primary">
                     <td>{value._id}</td>
                     <td>{value.firstname}</td>
@@ -30,15 +30,14 @@ const ReportNew = (props) => {
                     <td>{value.status}</td>
                     <td>{value.date}</td>
                   </tr>
-
-                }
+                )}
               </>
             );
           })}
         </tbody>
       </table>
     </div>
-  )
-}
+  );
+};
 
 export default ReportNew;

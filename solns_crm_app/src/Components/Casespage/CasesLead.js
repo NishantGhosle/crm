@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import CasesTable from "./CasesTable";
 import "./caselead.css";
 
@@ -13,15 +13,16 @@ const CasesLead = ({ leadArray }) => {
             <th>lastname</th>
             <th>Product</th>
             <th>Documents</th>
+            <th>Onboard completed</th>
           </tr>
         </thead>
         <tbody>
           {leadArray.map((value, index) => {
             return (
               <CasesTable
+                key={index}
                 num={index + 1}
                 index={index}
-                key={index}
                 id={value._id}
                 firstname={value.firstname}
                 lastname={value.lastname}

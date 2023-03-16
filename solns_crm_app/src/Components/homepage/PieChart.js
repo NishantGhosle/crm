@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import {
   Chart as ChartJS,
   RadialLinearScale,
@@ -11,11 +11,6 @@ import { PolarArea } from "react-chartjs-2";
 ChartJS.register(RadialLinearScale, ArcElement, Tooltip, Legend);
 
 const PieChart = (props) => {
-  console.log(props.newleadCount);
-  console.log(props.workingCounts);
-  console.log(props.contactedCount);
-  console.log(props.completedCounts);
-
   const data = {
     labels: ["NewLeads", "Contacted Leads", "Working Leads", "Completed Leads"],
     datasets: [
@@ -39,10 +34,16 @@ const PieChart = (props) => {
   };
 
   return (
-    <div style={{width: '50vw',height: '48vh',display:'flex',flexDirection:'row',justifyContent: 'center'}} >
-      {" "}
-      
-      <PolarArea data={data} />{" "}
+    <div
+      style={{
+        width: "50vw",
+        height: "48vh",
+        display: "flex",
+        flexDirection: "row",
+        justifyContent: "center",
+      }}
+    >
+      <PolarArea data={data} />
     </div>
   );
 };

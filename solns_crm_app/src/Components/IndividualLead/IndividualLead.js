@@ -1,6 +1,6 @@
-import React, { useEffect, useState, useContext} from "react";
+import React, { useEffect, useState, useContext } from "react";
 import CommonPart from "../Commonpart/CommonPart";
-import TopNavBar from '../homepage/TopNavBar';
+import TopNavBar from "../homepage/TopNavBar";
 import { useLocation } from "react-router-dom";
 import "./individualLead.css";
 import StatusBtnLayout from "./StatusBtnLayout";
@@ -14,10 +14,7 @@ const IndividualLead = () => {
   const type = location.state.type;
   const email = location.state.email;
   const userid = location.state.profile;
-  console.log(id);
-
-  const {user} = useContext(AuthContext);
-
+  const { user } = useContext(AuthContext);
   const [leadDetails, setLeadDetails] = useState({
     firstname: "",
     lastname: "",
@@ -52,71 +49,76 @@ const IndividualLead = () => {
     getDetails(id);
   }, []);
 
-
-  //  OnBoard Process 
+  //  OnBoard Process
   const navigate = useNavigate();
-  function handleOnBoard(id){
+  function handleOnBoard(id) {
     navigate("/onboard", {
       state: {
         _id: id,
         email: `${email}`,
         type: `${type}`,
-        profile:`${userid}`
+        profile: `${userid}`,
       },
     });
   }
 
   return (
     <>
-    {user && (<div>
-      <CommonPart />
-      <TopNavBar  email_id={email} type={type} profile={userid}/>
-
-      <div>
-        <div className="header">
-          <p className="parabox">Lead</p>
-          <div className="onboardbtndiv">
-            <p>
-              {leadDetails.firstname} {leadDetails.lastname}
-            </p>
-            <button style={{ borderRadius: "10px", marginBottom: "20px",border:'2px solid white',color:" white",backgroundColor:" rgb(146, 146, 249)" }} onClick={()=>{handleOnBoard(leadDetails.id)}}>
-             Click to OnBoard
-            </button>
+      {user && (
+        <div>
+          <CommonPart />
+          <TopNavBar email_id={email} type={type} profile={userid} />
+          <div>
+            <div className="header">
+              <p className="parabox">Lead</p>
+              <div className="onboardbtndiv">
+                <p>
+                  {leadDetails.firstname} {leadDetails.lastname}
+                </p>
+                <button
+                  style={{
+                    borderRadius: "10px",
+                    marginBottom: "20px",
+                    border: "2px solid white",
+                    color: " white",
+                    backgroundColor: " rgb(146, 146, 249)",
+                  }}
+                  onClick={() => {
+                    handleOnBoard(leadDetails.id);
+                  }}
+                >
+                  Click to OnBoard
+                </button>
+              </div>
+            </div>
+            <div>
+              <StatusBtnLayout statusVal={leadDetails.status} />
+            </div>
+            <div className="outerdivLead">
+              <p className="parabox">Date</p>
+              {leadDetails.date}
+            </div>
+            <div className="outerdivLead">
+              <p className="parabox">Id</p>
+              {leadDetails.id}
+            </div>
+            <div className="outerdivLead">
+              <p className="parabox">Description</p>
+              {leadDetails.description}
+            </div>
+            <div className="outerdivLead">
+              <p className="parabox">Email</p>
+              {leadDetails.email}
+            </div>
+            <div className="outerdivLead">
+              <p className="parabox">status</p>
+              {leadDetails.status}
+            </div>
           </div>
         </div>
-
-        <div>
-          <StatusBtnLayout statusVal={leadDetails.status} />
-        </div>
-        <div className="outerdivLead">
-          <p className="parabox">Date</p>
-          {leadDetails.date}
-        </div>
-
-        <div className="outerdivLead">
-          <p className="parabox">Id</p>
-          {leadDetails.id}
-        </div>
-        <div className="outerdivLead">
-          <p className="parabox">Description</p>
-          {leadDetails.description}
-        </div>
-
-        <div className="outerdivLead">
-          <p className="parabox">Email</p>
-          {leadDetails.email}
-        </div>
-
-        <div className="outerdivLead">
-          <p className="parabox">status</p>
-          {leadDetails.status}
-        </div>
-      </div>
-    </div>)}
-
-    {!user && (<AdminLogin />)}
+      )}
+      {!user && <AdminLogin />}
     </>
-    
   );
 };
 

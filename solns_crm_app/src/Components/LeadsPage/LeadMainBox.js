@@ -1,10 +1,15 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import "./leadmainbox.css";
 import { useNavigate } from "react-router-dom";
 
-const LeadMainBox = ({ updateleadList, leadArray,email_id,type,profile}) => {
-  console.log(leadArray);
-  
+const LeadMainBox = ({
+  updateleadList,
+  leadArray,
+  email_id,
+  type,
+  profile,
+}) => {
+  // console.log(leadArray);
   function deleteLead(id) {
     fetch(`http://localhost:3030/${id}`, {
       method: "DELETE",
@@ -16,9 +21,7 @@ const LeadMainBox = ({ updateleadList, leadArray,email_id,type,profile}) => {
       });
     });
   }
-
   const navigate = useNavigate();
-
   function viewmore(id) {
     navigate("/individuallead", {
       state: {
@@ -31,7 +34,7 @@ const LeadMainBox = ({ updateleadList, leadArray,email_id,type,profile}) => {
   }
 
   function updateLead(id) {
-    console.log(profile)
+    console.log(profile);
     navigate("/editleadcomp", {
       state: {
         id: id,
@@ -65,41 +68,42 @@ const LeadMainBox = ({ updateleadList, leadArray,email_id,type,profile}) => {
             let leadtype = value.leadtype;
             return (
               <>
-              {leadtype === 'normal' && <tr key={index} className="table-secondary">
-                  <td>{value._id}</td>
-                  <td>{value.firstname}</td>
-                  <td>{value.lastname}</td>
-                  <td>{value.email}</td>
-                  <td>{value.description}</td>
-                  <td>{value.status}</td>
-                  <td>{value.date}</td>
+                {leadtype === "normal" && (
+                  <tr key={index} className="table-secondary">
+                    <td>{value._id}</td>
+                    <td>{value.firstname}</td>
+                    <td>{value.lastname}</td>
+                    <td>{value.email}</td>
+                    <td>{value.description}</td>
+                    <td>{value.status}</td>
+                    <td>{value.date}</td>
 
-                  <td>
-                    <button
-                      className="btn btn-info"
-                      onClick={() => updateLead(value._id)}
-                    >
-                      Edit
-                    </button>
-                  </td>
-                  <td>
-                    <button
-                      className="btn btn-danger"
-                      onClick={() => deleteLead(value._id)}
-                    >
-                      Delete
-                    </button>
-                  </td>
-                  <td>
-                    <button
-                      className="btn btn-light"
-                      onClick={() => viewmore(value._id)}
-                    >
-                      view more
-                    </button>
-                  </td>
-                </tr>}
-                
+                    <td>
+                      <button
+                        className="btn btn-info"
+                        onClick={() => updateLead(value._id)}
+                      >
+                        Edit
+                      </button>
+                    </td>
+                    <td>
+                      <button
+                        className="btn btn-danger"
+                        onClick={() => deleteLead(value._id)}
+                      >
+                        Delete
+                      </button>
+                    </td>
+                    <td>
+                      <button
+                        className="btn btn-light"
+                        onClick={() => viewmore(value._id)}
+                      >
+                        view more
+                      </button>
+                    </td>
+                  </tr>
+                )}
               </>
             );
           })}

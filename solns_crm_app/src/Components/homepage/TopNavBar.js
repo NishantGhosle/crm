@@ -1,14 +1,11 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import "./topNavBar.css";
 import { useNavigate } from "react-router-dom";
 
-
-const TopNavBar = ({email_id,type,profile}) => {
+const TopNavBar = ({ email_id, type, profile }) => {
   let navbar_array;
-  let dashboard;
-  console.log(profile);
-  if(type==='admin'){
- 
+  // console.log(profile);
+  if (type === "admin") {
     navbar_array = [
       "Home",
       "Users",
@@ -19,8 +16,7 @@ const TopNavBar = ({email_id,type,profile}) => {
       "Cases",
       "Reports",
     ];
-  }else if(type === "user"){
- 
+  } else if (type === "user") {
     navbar_array = [
       "Home",
       "Allocated",
@@ -30,19 +26,14 @@ const TopNavBar = ({email_id,type,profile}) => {
       "Cases",
       "Reports",
     ];
-
   }
- 
- 
-  // let [val, setval] = useState("Home");
-  // let [id, setid] = useState(0);
+
   const navigate = useNavigate();
   function clickhandle(val, id) {
     console.log(val, id);
 
-    if (val == "Home") {
-      navigate(`/dashboard`); 
-      
+    if (val === "Home") {
+      navigate(`/dashboard`);
     } else if (val === "Leads") {
       navigate("/leads", {
         state: {
@@ -52,17 +43,14 @@ const TopNavBar = ({email_id,type,profile}) => {
         },
       });
     } else if (val === "Accounts") {
-      
       navigate("/account", {
         state: {
           email: `${email_id}`,
           type: `${type}`,
           profile: `${profile}`,
-          
         },
       });
     } else if (val === "Opportunities") {
-   
       navigate("/opportunities", {
         state: {
           email: `${email_id}`,
@@ -71,7 +59,6 @@ const TopNavBar = ({email_id,type,profile}) => {
         },
       });
     } else if (val === "Cases") {
-      
       navigate("/case", {
         state: {
           email: `${email_id}`,
@@ -80,7 +67,6 @@ const TopNavBar = ({email_id,type,profile}) => {
         },
       });
     } else if (val === "Calendar") {
-      
       navigate("/calendars", {
         state: {
           email: `${email_id}`,
@@ -89,7 +75,6 @@ const TopNavBar = ({email_id,type,profile}) => {
         },
       });
     } else if (val === "Reports") {
-      
       navigate("/reports", {
         state: {
           email: `${email_id}`,
@@ -98,7 +83,6 @@ const TopNavBar = ({email_id,type,profile}) => {
         },
       });
     } else if (val === "Emails") {
-     
       navigate("/emails", {
         state: {
           email: `${email_id}`,
@@ -107,7 +91,6 @@ const TopNavBar = ({email_id,type,profile}) => {
         },
       });
     } else if (val === "Meeting") {
-    
       navigate("/meeting", {
         state: {
           email: `${email_id}`,
@@ -116,7 +99,6 @@ const TopNavBar = ({email_id,type,profile}) => {
         },
       });
     } else if (val === "Calls") {
-     
       navigate("/calls", {
         state: {
           email: `${email_id}`,
@@ -125,7 +107,6 @@ const TopNavBar = ({email_id,type,profile}) => {
         },
       });
     } else if (val === "Tasks") {
-      
       navigate("/task", {
         state: {
           email: `${email_id}`,
@@ -133,8 +114,7 @@ const TopNavBar = ({email_id,type,profile}) => {
           profile: profile,
         },
       });
-    } 
-    else if (val === "Allocation") {
+    } else if (val === "Allocation") {
       navigate("/allocation", {
         state: {
           email: `${email_id}`,
@@ -142,8 +122,7 @@ const TopNavBar = ({email_id,type,profile}) => {
           profile: profile,
         },
       });
-    } 
-    else if (val === "Allocated") {
+    } else if (val === "Allocated") {
       navigate("/allocated", {
         state: {
           email: `${email_id}`,
@@ -151,21 +130,19 @@ const TopNavBar = ({email_id,type,profile}) => {
           profile: profile,
         },
       });
-    } 
-    else if (val === "Users") {
+    } else if (val === "Users") {
       navigate(`/userlist`, {
         state: {
           email: `${email_id}`,
           type: `${type}`,
           profile: profile,
         },
-      }); 
-    }else {
+      });
+    } else {
       navigate("/");
     }
   }
 
- 
   return (
     <div>
       <ul

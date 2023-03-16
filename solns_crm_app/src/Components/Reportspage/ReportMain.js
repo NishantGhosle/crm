@@ -1,8 +1,6 @@
-import React, { useState } from "react";
-
+import React from "react";
 
 const ReportMain = (props) => {
-  
   return (
     <div>
       <table className="table table-hover">

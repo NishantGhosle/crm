@@ -1,5 +1,5 @@
 import "./App.css";
-import React, { useState, useContext } from "react";
+import React from "react";
 import Home from "./Components/homepage/Home";
 import Lead from "./Components/LeadsPage/Lead";
 import { Route, Routes } from "react-router-dom";
@@ -17,7 +17,8 @@ import Allocation from "./Components/DashBoard/Allocation";
 import AllocateLead from "./Components/DashBoard/AllocateLead";
 import Allocated from "./Components/UserDashBoard/Allocated";
 import Dashboard from "./Components/DashBoard/Dashboard";
-
+import CompanyRegister from "./Components/Register/CompanyRegisterPage";
+import BDARegister from "./Components/Register/BDARegisterPage";
 
 function App() {
   // const { user } = useContext(AuthContext);
@@ -26,7 +27,10 @@ function App() {
     <div className="App">
       <Routes>
         <Route path="/" element={<AdminLogin />} />
+        <Route path="/login" element={<AdminLogin />} />
         <Route index element={<AdminLogin />} />
+        <Route path="/company-register-page" element={<CompanyRegister />} />
+        <Route path="/bda-register-page" element={<BDARegister />} />
         {/* {type === "user" && (
           <>
             <Route path="/home" element={<Home />} />

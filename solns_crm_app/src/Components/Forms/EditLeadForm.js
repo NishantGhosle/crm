@@ -3,7 +3,7 @@ import React from "react";
 const EditLeadForm = ({ handleUpdateLeadSubmit, handleInput, formvalue }) => {
   return (
     <div className="outerdivOnBoard">
-       <h1 style={{color:'white',marginTop:'10px'}}>EDIT LEAD</h1>
+      <h1 style={{ color: "white", marginTop: "10px" }}>EDIT LEAD</h1>
       <form onSubmit={handleUpdateLeadSubmit} className="onBoardForm">
         <div className="mb-3">
           <label htmlFor="firstName">First Name</label>
@@ -29,10 +29,9 @@ const EditLeadForm = ({ handleUpdateLeadSubmit, handleInput, formvalue }) => {
             placeholder="Enter last name"
           />
         </div>
-
         <div className="mb-3">
           <label htmlFor="email">Email</label>
-            <br></br>
+          <br></br>
           <input
             type="email"
             className="form-control"
@@ -43,9 +42,8 @@ const EditLeadForm = ({ handleUpdateLeadSubmit, handleInput, formvalue }) => {
             onChange={handleInput}
           />
         </div>
-
         <label htmlFor="exampleFormControlInput1" className="form-label">
-          discribtion
+          Description
         </label>
         <br></br>
         <textarea
@@ -56,7 +54,7 @@ const EditLeadForm = ({ handleUpdateLeadSubmit, handleInput, formvalue }) => {
           value={formvalue.description}
           onChange={handleInput}
         ></textarea>
-         <br></br>
+        <br></br>
         <select
           name="status"
           className="form-select dropdown"
@@ -69,8 +67,10 @@ const EditLeadForm = ({ handleUpdateLeadSubmit, handleInput, formvalue }) => {
           <option value="working">working</option>
           <option value="completed">Completed</option>
         </select>
-         <br></br>
-        <button type="submit" className="btn btn-submit">Submit</button>
+        <br></br>
+        <button type="submit" className="btn btn-submit">
+          Submit
+        </button>
       </form>
     </div>
   );

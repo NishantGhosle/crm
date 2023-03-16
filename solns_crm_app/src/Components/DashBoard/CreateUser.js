@@ -1,31 +1,22 @@
-import React, { useState, useEffect,useContext } from 'react';
-import { useLocation} from "react-router-dom";
-import { useNavigate } from "react-router-dom";
-import CommonPart from '../Commonpart/CommonPart';
-import TopNavBar from '../homepage/TopNavBar';
+import React, { useState, useContext } from "react";
+import { useLocation } from "react-router-dom";
+import CommonPart from "../Commonpart/CommonPart";
+import TopNavBar from "../homepage/TopNavBar";
 import AuthContext from "../Context/AuthProvider";
 import AdminLogin from "../Login/LoginPage";
 
-
 const CreateUser = () => {
-
-  let navigate = useNavigate();
   const location = useLocation();
-  
   const type = location.state.type;
   const email = location.state.email;
-
-  const {user} = useContext(AuthContext);
-
-
-
-  console.log(email);
+  const { user } = useContext(AuthContext);
+  // console.log(email);
 
   const [formvalue, setFormvalue] = useState({
     name: "",
     email: "",
     password: "",
-    phone: "", 
+    phone: "",
     adminemail: email,
   });
 
@@ -49,9 +40,7 @@ const CreateUser = () => {
     })
       .then((response) => {
         alert("successfully submited");
-       
-        console.log(response);
-       
+        // console.log(response);
         setFormvalue({
           name: "",
           email: "",
@@ -66,80 +55,74 @@ const CreateUser = () => {
 
   return (
     <>
-    {user && ( <div>
-      <div>
-      <CommonPart />
-      <TopNavBar  email_id={email} type={type}/>
-      </div >
-      <div  className="outerdivOnBoard" style={{minHeight:'100vh'}}>
-      <h1 style={{color:'white',marginTop:'10px'}}>ADD USER</h1>
-      <form onSubmit={handleNewUserSubmit} className="onBoardForm">
-      <div className="mb-3">
-          <label htmlFor="name">Name</label>
-          <br></br>
-          <input
-            id="name"
-            name="name"
-            className="form-control"
-            value={formvalue.name}
-            onChange={handleInput}
-            placeholder="Enter name"
-          />
+      {user && (
+        <div>
+          <div>
+            <CommonPart />
+            <TopNavBar email_id={email} type={type} />
+          </div>
+          <div className="outerdivOnBoard" style={{ minHeight: "100vh" }}>
+            <h1 style={{ color: "white", marginTop: "10px" }}>ADD USER</h1>
+            <form onSubmit={handleNewUserSubmit} className="onBoardForm">
+              <div className="mb-3">
+                <label htmlFor="name">Name</label>
+                <br></br>
+                <input
+                  id="name"
+                  name="name"
+                  className="form-control"
+                  value={formvalue.name}
+                  onChange={handleInput}
+                  placeholder="Enter name"
+                />
+              </div>
+              <div className="mb-3">
+                <label htmlFor="email">Email</label>
+                <br></br>
+                <input
+                  type="email"
+                  className="form-control"
+                  id="exampleFormControlInput1"
+                  placeholder="name@example.com"
+                  name="email"
+                  value={formvalue.email}
+                  onChange={handleInput}
+                />
+              </div>
+              <div className="mb-3">
+                <label htmlFor="password">Password</label>
+                <br></br>
+                <input
+                  id="password"
+                  name="password"
+                  className="form-control"
+                  value={formvalue.password}
+                  onChange={handleInput}
+                  placeholder="Enter password"
+                />
+              </div>
+              <div className="mb-3">
+                <label htmlFor="phone">Phone Number</label>
+                <br></br>
+                <input
+                  id="phone"
+                  name="phone"
+                  className="form-control"
+                  value={formvalue.phone}
+                  onChange={handleInput}
+                  placeholder="Enter phone number"
+                />
+              </div>
+              <button type="submit" className="btn btn-submit">
+                Submit
+              </button>
+            </form>
+          </div>
         </div>
-       
-
-        <div className="mb-3">
-          <label htmlFor="email">Email</label>
-            <br></br>
-          <input
-            type="email"
-            className="form-control"
-            id="exampleFormControlInput1"
-            placeholder="name@example.com"
-            name="email"
-            value={formvalue.email}
-            onChange={handleInput}
-          />
-        </div>
-
-
-        <div className="mb-3">
-          <label htmlFor="password">Password</label>
-          <br></br>
-          <input
-            id="password"
-            name="password"
-            className="form-control"
-            value={formvalue.password}
-            onChange={handleInput}
-            placeholder="Enter password"
-          />
-         </div>
-
-         <div className="mb-3">
-          <label htmlFor="phone">Phone Number</label>
-          <br></br>
-          <input
-            id="phone"
-            name="phone"
-            
-            className="form-control"
-            value={formvalue.phone}
-            onChange={handleInput}
-            placeholder="Enter phone number"
-          />
-        </div>
-
-        <button type='submit' className="btn btn-submit">Submit</button>
-
-      </form>
-      </div>
-     
-    </div>)}
-    {!user && (<AdminLogin />)}
+      )}
+      {!user && <AdminLogin />}
     </>
-   
-  )
-}
+  );
+};
 
 export default CreateUser;

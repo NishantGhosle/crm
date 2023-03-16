@@ -1,23 +1,18 @@
 import React, { useEffect, useState } from "react";
 import "./myInboxHome.css";
-import Calendar from "react-calendar";
 import PieChart from "./PieChart";
 
-const MyInboxHome = ({ email_id, type, profile }) => {
-  let [totalleadCount, settotalLeadCount] = useState(0);
-  let [newleadCount, setNewLeadCount] = useState(0);
-  let [contactedCount, setContactedCount] = useState(0);
-  let [workingCounts, setWorkingCounts] = useState(0);
-  let [completedCounts, setCompletedCounts] = useState(0);
-
-  let [yourtotalleadCount, setyourtotalLeadCount] = useState(0);
-  let [yournewleadCount, setyourNewLeadCount] = useState(0);
-  let [yourcontactedCount, setyourContactedCount] = useState(0);
-  let [yourworkingCounts, setyourWorkingCounts] = useState(0);
-  let [yourcompletedCounts, setyourCompletedCounts] = useState(0);
-
-  let [nameofUser, setnameofUser] = useState("");
-
+const MyInboxHome = ({ email_id, profile }) => {
+  const [totalleadCount, settotalLeadCount] = useState(0);
+  const [newleadCount, setNewLeadCount] = useState(0);
+  const [contactedCount, setContactedCount] = useState(0);
+  const [workingCounts, setWorkingCounts] = useState(0);
+  const [completedCounts, setCompletedCounts] = useState(0);
+  const [yourtotalleadCount, setyourtotalLeadCount] = useState(0);
+  const [yournewleadCount, setyourNewLeadCount] = useState(0);
+  const [yourcontactedCount, setyourContactedCount] = useState(0);
+  const [yourworkingCounts, setyourWorkingCounts] = useState(0);
+  const [yourcompletedCounts, setyourCompletedCounts] = useState(0);
   let newld = 0;
   let contld = 0;
   let compld = 0;
@@ -45,10 +40,6 @@ const MyInboxHome = ({ email_id, type, profile }) => {
         setContactedCount(contld);
         setCompletedCounts(compld);
         setWorkingCounts(workld);
-        console.log(newld);
-        console.log(contld);
-        console.log(compld);
-        console.log(workld);
         newld = 0;
         contld = 0;
         compld = 0;
@@ -71,12 +62,12 @@ const MyInboxHome = ({ email_id, type, profile }) => {
     await fetch(`http://localhost:3030/getlead/byemail/${email_id}`)
       .then((response) => response.json())
       .then((json) => {
-        console.log(json);
+        // console.log(json);
 
         fetch(`http://localhost:3030/getlead/byid/${profile}`)
           .then((response) => response.json())
           .then((data) => {
-            console.log(data);
+            // console.log(data);
             let arraydata = [...json, ...data];
             setyourtotalLeadCount(arraydata.length);
             arraydata.map((value) => {
@@ -91,15 +82,10 @@ const MyInboxHome = ({ email_id, type, profile }) => {
                 yournewld = yournewld + 1;
               }
             });
-
             setyourNewLeadCount(yournewld);
             setyourContactedCount(yourcontld);
             setyourCompletedCounts(yourcompld);
             setyourWorkingCounts(yourworkld);
-            console.log(yournewld);
-            console.log(yourcontld);
-            console.log(yourcompld);
-            console.log(yourworkld);
             yournewld = 0;
             yourcontld = 0;
             yourcompld = 0;
@@ -121,13 +107,14 @@ const MyInboxHome = ({ email_id, type, profile }) => {
   return (
     <div>
       <div className="profileDetail">
-        <div><h3>Your UserName: {email_id}</h3>
-        <h3>Your ID: {profile}</h3></div>
+        <div>
+          <h3>Your UserName: {email_id}</h3>
+          <h3>Your ID: {profile}</h3>
+        </div>
         <div>
           <h3>Company total leads: {totalleadCount}</h3>
           <h3>Yours total leads: {yourtotalleadCount}</h3>
         </div>
-        
       </div>
 
       <h3 style={{ textAlign: "center", marginBottom: "10px" }}>

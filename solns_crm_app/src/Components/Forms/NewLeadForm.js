@@ -1,11 +1,14 @@
 import React from "react";
 
-const NewLeadForm = ({handleNewLeadSubmit,handleInput,formvalue}) => {
+const NewLeadForm = ({ handleNewLeadSubmit, handleInput, formvalue }) => {
   return (
     <div className="outerdivOnBoard">
-       <h1 style={{color:'white',marginTop:'10px'}}>NEW LEAD</h1>
-      {" "}
-      <form onSubmit={handleNewLeadSubmit} className="onBoardForm" autoComplete="off">
+      <h1 style={{ color: "white", marginTop: "10px" }}>NEW LEAD</h1>{" "}
+      <form
+        onSubmit={handleNewLeadSubmit}
+        className="onBoardForm"
+        autoComplete="off"
+      >
         <div className="mb-3">
           <label htmlFor="firstName">First Name</label>
           <br></br>
@@ -16,7 +19,6 @@ const NewLeadForm = ({handleNewLeadSubmit,handleInput,formvalue}) => {
             value={formvalue.firstname}
             onChange={handleInput}
             placeholder="Enter first name"
-            
           />
         </div>
         <div className="mb-3">
@@ -31,11 +33,9 @@ const NewLeadForm = ({handleNewLeadSubmit,handleInput,formvalue}) => {
             placeholder="Enter last name"
           />
         </div>
-
         <div className="mb-3">
           <label htmlFor="email">Email</label>
           <br></br>
- 
           <input
             type="email"
             className="form-control"
@@ -46,7 +46,6 @@ const NewLeadForm = ({handleNewLeadSubmit,handleInput,formvalue}) => {
             onChange={handleInput}
           />
         </div>
-
         <label htmlFor="exampleFormControlInput1" className="form-label">
           discribtion
         </label>
@@ -59,7 +58,7 @@ const NewLeadForm = ({handleNewLeadSubmit,handleInput,formvalue}) => {
           value={formvalue.description}
           onChange={handleInput}
         ></textarea>
-         <br></br>
+        <br></br>
         <select
           name="status"
           className="form-select dropdown"
@@ -72,8 +71,10 @@ const NewLeadForm = ({handleNewLeadSubmit,handleInput,formvalue}) => {
           <option value="working">working</option>
           <option value="completed">Completed</option>
         </select>
-          <br></br>
-        <button type="submit" className="btn btn-submit">Submit</button>
+        <br></br>
+        <button type="submit" className="btn btn-submit">
+          Submit
+        </button>
       </form>
     </div>
   );

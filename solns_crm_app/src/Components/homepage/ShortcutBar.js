@@ -1,4 +1,3 @@
-// rafce to create component
 import React, { useState } from "react";
 import "./shortcutBar.css";
 import { Modal, ModalBody, ModalHeader } from "reactstrap";
@@ -29,7 +28,7 @@ const ShortcutBar = () => {
   const url = "http://localhost:3030/addlead";
   const handleNewLeadSubmit = (e) => {
     e.preventDefault();
-    console.log(formvalue);
+    // console.log(formvalue);
     fetch(url, {
       method: "POST",
       headers: {
@@ -57,7 +56,6 @@ const ShortcutBar = () => {
 
   let shortcut_Array = [
     "Create Lead",
-
     "Create Task",
     "Report Bug",
     "Compose Email",

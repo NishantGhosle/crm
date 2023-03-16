@@ -11,14 +11,13 @@ import ReportComplete from "./ReportComplete";
 import AuthContext from "../Context/AuthProvider";
 import AdminLogin from "../Login/LoginPage";
 
-
 const Reports = () => {
   const location = useLocation();
   const type = location.state.type;
   const email = location.state.email;
   const userid = location.state.profile;
 
-  const {user} = useContext(AuthContext);
+  const { user } = useContext(AuthContext);
 
   const [finalData, setfinalData] = useState([]);
   const [clrState, setClrState] = useState("all");
@@ -54,66 +53,71 @@ const Reports = () => {
 
   return (
     <>
-    {user && ( <div>
-      <CommonPart />
-      <TopNavBar email_id={email} type={type} profile={userid} />
-      <div className="colorbox">
-        <button
-          className="alert alert-secondary"
-          onClick={() => {
-            setClrState("all");
-          }}
-        >
-          All Leads
-        </button>
-        <button
-          className="alert alert-primary"
-          onClick={() => {
-            setClrState("new");
-          }}
-        >
-          New Leads
-        </button>
-        <button
-          className="alert alert-info"
-          onClick={() => {
-            setClrState("contacted");
-          }}
-        >
-          Contacted Leads
-        </button>
-        <button
-          className="alert alert-warning"
-          onClick={() => {
-            setClrState("working");
-          }}
-        >
-          Working Leads
-        </button>
-        <button
-          className="alert alert-success"
-          onClick={() => {
-            setClrState("completed");
-          }}
-        >
-          Completed Leads
-        </button>
-      </div>
-      <div>
-        {clrState === "all" && <ReportMain reportArray={finalData} />}
-        {clrState === "new" && <ReportNew reportArray={finalData} />}
-        {clrState === "contacted" && (
-          <ReportContacted reportArray={finalData} />
-        )}
-        {clrState === "working" && <ReportWorking reportArray={finalData} />}
-        {clrState === "completed" && <ReportComplete reportArray={finalData} />}
-      </div>
+      {user && (
+        <div>
+          <CommonPart />
+          <TopNavBar email_id={email} type={type} profile={userid} />
+          <div className="colorbox">
+            <button
+              className="alert alert-secondary"
+              onClick={() => {
+                setClrState("all");
+              }}
+            >
+              All Leads
+            </button>
+            <button
+              className="alert alert-primary"
+              onClick={() => {
+                setClrState("new");
+              }}
+            >
+              New Leads
+            </button>
+            <button
+              className="alert alert-info"
+              onClick={() => {
+                setClrState("contacted");
+              }}
+            >
+              Contacted Leads
+            </button>
+            <button
+              className="alert alert-warning"
+              onClick={() => {
+                setClrState("working");
+              }}
+            >
+              Working Leads
+            </button>
+            <button
+              className="alert alert-success"
+              onClick={() => {
+                setClrState("completed");
+              }}
+            >
+              Completed Leads
+            </button>
+          </div>
+          <div>
+            {clrState === "all" && <ReportMain reportArray={finalData} />}
+            {clrState === "new" && <ReportNew reportArray={finalData} />}
+            {clrState === "contacted" && (
+              <ReportContacted reportArray={finalData} />
+            )}
+            {clrState === "working" && (
+              <ReportWorking reportArray={finalData} />
+            )}
+            {clrState === "completed" && (
+              <ReportComplete reportArray={finalData} />
+            )}
+          </div>
 
-      {/* <ReportMain reportArray={leadData} /> */}
-    </div>)}
-    {!user && (<AdminLogin />)}
+          {/* <ReportMain reportArray={leadData} /> */}
+        </div>
+      )}
+      {!user && <AdminLogin />}
     </>
-   
   );
 };
 

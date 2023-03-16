@@ -1,12 +1,11 @@
 import React from "react";
 
-const ImportLeadForm = ({handleSubmitImpot,handleFile,excelFileError}) => {
+const ImportLeadForm = ({ handleSubmitImpot, handleFile, excelFileError }) => {
   return (
     <div className="outerdivOnBoard">
-      <h1 style={{color:'white',marginTop:'10px'}}>IMPORT LEADS</h1>
-      {" "}
+      <h1 style={{ color: "white", marginTop: "10px" }}>IMPORT LEADS</h1>{" "}
       <form
-        className="form-group onBoardForm" 
+        className="form-group onBoardForm"
         autoComplete="off"
         onSubmit={handleSubmitImpot}
       >

@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import "./CaseTable.css";
 import { useNavigate } from "react-router-dom";
 
@@ -15,11 +15,9 @@ const CasesTable = ({
   residentialproof,
   bankstatement,
 }) => {
- 
-
   let productStatus = "";
   let aproveStatus = "";
-
+  let onboardStatus = "";
   if (
     pan !== undefined &&
     itr !== undefined &&
@@ -38,9 +36,12 @@ const CasesTable = ({
     productStatus = "Not Selected";
   }
 
-
+  if (aproveStatus !== undefined && productStatus !== undefined) {
+    onboardStatus = "Proceed";
+  } else {
+    onboardStatus = "Pending";
+  }
   // handling Clicks
-
   const navigate = useNavigate();
   const handleclickOnCase = (id) => {
     navigate("/onboard", {
@@ -48,7 +49,7 @@ const CasesTable = ({
         _id: id,
       },
     });
-  }
+  };
 
   return (
     <tr key={index}>
@@ -57,12 +58,36 @@ const CasesTable = ({
       <td>{lastname}</td>
       <td>
         {productStatus}
-        <button className="btn btn-submit" onClick={() => {handleclickOnCase(id)}}>select</button>
+        <button
+          className="btn btn-submit"
+          onClick={() => {
+            handleclickOnCase(id);
+          }}
+        >
+          select
+        </button>
       </td>
       <td>
-        {" "}
         {aproveStatus}
-        <button className="btn btn-submit" onClick={() => {handleclickOnCase(id)}}>upload</button>
+        <button
+          className="btn btn-submit"
+          onClick={() => {
+            handleclickOnCase(id);
+          }}
+        >
+          upload
+        </button>
+      </td>
+      <td>
+        {onboardStatus}
+        <button
+          className="btn btn-submit"
+          onClick={() => {
+            handleclickOnCase(id);
+          }}
+        >
+          onboarded
+        </button>
       </td>
     </tr>
   );

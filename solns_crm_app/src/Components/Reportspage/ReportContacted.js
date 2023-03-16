@@ -1,9 +1,9 @@
-import React from 'react'
+import React from "react";
 
 const ReportContacted = (props) => {
   return (
     <div>
-       <table className="table table-hover">
+      <table className="table table-hover">
         <thead className="table-dark">
           <tr>
             <th>Id</th>
@@ -20,7 +20,7 @@ const ReportContacted = (props) => {
             const statuscolor = value.status;
             return (
               <>
-                {statuscolor === "contacted" && 
+                {statuscolor === "contacted" && (
                   <tr key={index} className="table-info">
                     <td>{value._id}</td>
                     <td>{value.firstname}</td>
@@ -30,15 +30,14 @@ const ReportContacted = (props) => {
                     <td>{value.status}</td>
                     <td>{value.date}</td>
                   </tr>
-
-                }
+                )}
               </>
             );
           })}
         </tbody>
       </table>
     </div>
-  )
-}
+  );
+};
 
 export default ReportContacted;
